@@ -22,3 +22,7 @@ print(L1)
 L = [int(x) for x in input().split()]
 t = [(L[x],L[x+1]) for x in range(len(L)-1)]
 print(t)
+#h
+s = input("string=")  #abcde
+L = [(s[i:] + s[:i]) for i in range(len(s))] #abcde bcdea cdeab deabc eabcd
+print(L)
