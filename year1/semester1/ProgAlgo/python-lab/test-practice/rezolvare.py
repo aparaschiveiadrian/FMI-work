@@ -106,3 +106,25 @@ lista_noua.sort(key=lambda x: -x) #sortare desc
 with open(nume_fisier_out, "w") as file:
     for x in lista_noua:
         file.write(str(x) + " ")
+#Exercitiul 2
+#a
+def citire(nume_fisier):
+    with open(nume_fisier, "r") as file:
+        program = {}
+        program_citit = file.readlines()
+        for line in program_citit:
+            linie = line.strip().split(sep="%")
+            linie_temp = [elem.strip() for elem in linie]
+            nume_cinema, nume_film, ore_film = linie_temp[0], linie_temp[1], linie_temp[2]
+
+            if nume_cinema in program:
+                program[nume_cinema].append((nume_film, ore_film))
+            else:
+                program[nume_cinema] = [(nume_film, ore_film)]  # Folosim o listă pentru a memora mai multe filme
+
+    return program
+
+fisier = "cifre.in"
+rezultat = citire(fisier)
+print(rezultat)
+#b
