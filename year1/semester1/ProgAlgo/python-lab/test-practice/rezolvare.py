@@ -128,3 +128,38 @@ fisier = "cifre.in"
 rezultat = citire(fisier)
 print(rezultat)
 #b
+def citire_fiser(nume_fisier):
+    program = {}
+    with open(nume_fisier, "r") as file:
+
+        lines = file.readlines()
+        for line in lines:
+            linieDeAdaugat = line.split(sep = "%")
+            nume_cinema, nume_film, ore_film = linieDeAdaugat[0].strip(), linieDeAdaugat[1].strip(), linieDeAdaugat[2].strip()
+            if nume_cinema in program:
+                program[nume_cinema].append((nume_film, ore_film))
+            else:
+                program[nume_cinema] = [(nume_film, ore_film)]
+    return program
+def sterge_ore(structura, cinema, film, ore):
+    noul_program ={}
+    for c in structura:
+        for (f, o) in structura[c]:
+            if f == film and o in ore:
+                pass
+            else:
+                if cinema in noul_program:
+                    noul_program[cinema].append((f, o))
+                else:
+                    noul_program[cinema] = [(f, o)]
+    return noul_program
+
+
+
+fisierIn = "cifre.in"
+rezultat = citire_fiser(fisierIn)
+orar = {"20:00","21:30","22:30"}
+print(sterge_ore(rezultat, "Cinema 1", "Minionii 2", orar))
+
+#c
+
